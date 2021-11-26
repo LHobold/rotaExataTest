@@ -10,6 +10,12 @@
       const message = "Incorrect username or password";
       return eModal.alert(message, title);
     }
+
+    if (params.unauthorized === "true") {
+      const title = "Unauthorized";
+      const message = "You need to login first";
+      return eModal.alert(message, title);
+    }
   });
 
   const form = document.getElementById("formLogin");

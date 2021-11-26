@@ -23,7 +23,14 @@ $password = $_POST["Password"];
 $success = validateLogin($username, $password, $accounts, $secret);
 
 if (!$success) {;
-    return header("location: index.html?invalid=true");
+    return header("location: index.php?invalid=true");
 }
 
-header("location: home.html");
+
+// Set cookie to persist login
+$cookieName = "auth";
+$cookieValue = "hashedToken";
+$authExpires = time() + 3600;
+
+setcookie($cookieName, $cookieValue, $authExpires);
+header("location: home.php");
